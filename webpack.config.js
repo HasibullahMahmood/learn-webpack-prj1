@@ -12,8 +12,14 @@ module.exports = {
 		rules: [
 			{
 				test: /\.(jpg|png)$/,
-				type: 'asset/resource', // bundles as file
+				// type: 'asset/resource', // bundles as file
 				// type: 'asset/inline', // bundles with js as base64 -> good for small sized files like svg's
+				type: 'asset', // combination of above two, webpack decides in which one to use based on the file size of 8KB,
+				// parser: {
+				// 	dataUrlCondition: {
+				// 		maxSize: 3 * 1024, // changing the default 8KB to 3KB
+				// 	},
+				// },
 			},
 		],
 	},
