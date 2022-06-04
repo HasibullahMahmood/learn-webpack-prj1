@@ -12,7 +12,8 @@ module.exports = {
 		rules: [
 			{
 				test: /\.(jpg|png)$/,
-				type: 'asset/resource',
+				type: 'asset/resource', // bundles as file
+				// type: 'asset/inline', // bundles with js as base64 -> good for small sized files like svg's
 			},
 		],
 	},
