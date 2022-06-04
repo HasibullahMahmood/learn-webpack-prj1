@@ -16,6 +16,35 @@ const helloWorld = () => {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (helloWorld);
 
 
+/***/ }),
+/* 2 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _assets_images_orange_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+
+
+const addImage = () => {
+	const img = document.createElement('img');
+	img.alt = 'Orange';
+	img.width = 300;
+	img.src = _assets_images_orange_jpg__WEBPACK_IMPORTED_MODULE_0__;
+
+	document.body.appendChild(img);
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (addImage);
+
+
+/***/ }),
+/* 3 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "b44eef0e6604b1c31cd1.jpg";
+
 /***/ })
 /******/ 	]);
 /************************************************************************/
@@ -72,15 +101,23 @@ const helloWorld = () => {
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		__webpack_require__.p = "D:\\workspaces\\webpack-workspace\\learn-webpack-prj1\\dist/";
+/******/ 	})();
+/******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _helloWorld__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _addImage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
+
 
 
 (0,_helloWorld__WEBPACK_IMPORTED_MODULE_0__["default"])();
+(0,_addImage__WEBPACK_IMPORTED_MODULE_1__["default"])();
 
 })();
 
