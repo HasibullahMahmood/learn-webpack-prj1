@@ -21,6 +21,10 @@ module.exports = {
 				// 	},
 				// },
 			},
+			{
+				test: /\.txt/,
+				type: 'asset/source',
+			},
 		],
 	},
 };
