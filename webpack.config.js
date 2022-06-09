@@ -1,9 +1,13 @@
 const path = require('path');
+const TerserPlugin = require('terser-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	entry: './src/index.js',
 	output: {
-		filename: 'bundle.js',
+		filename: 'bundle.[contenthash].js',
 		path: path.resolve(__dirname, './dist'), // js files
 		publicPath: path.resolve(__dirname, 'dist') + '/', // assets
 	},
@@ -27,11 +31,20 @@ module.exports = {
 			},
 			{
 				test: /\.css$/,
-				use: ['style-loader', 'css-loader'],
+				use: [
+					// 'style-loader',
+					MiniCssExtractPlugin.loader,
+					'css-loader',
+				],
 			},
 			{
 				test: /\.scss$/,
-				use: ['style-loader', 'css-loader', 'sass-loader'],
+				use: [
+					// 'style-loader',
+					MiniCssExtractPlugin.loader,
+					'css-loader',
+					'sass-loader',
+				],
 			},
 			{
 				test: /\.js$/,
@@ -44,6 +57,19 @@ module.exports = {
 					},
 				},
 			},
+			{
+				test: /\.hbs$/,
+				use: ['handlebars-loader'],
+			},
 		],
 	},
+	plugins: [
+		new TerserPlugin(),
+		new MiniCssExtractPlugin({ filename: 'styles.[contenthash].css' }),
+		new CleanWebpackPlugin(),
+		new HtmlWebpackPlugin({
+			template: 'src/index.hbs',
+			description: 'hey this is description',
+		}),
+	],
 };
