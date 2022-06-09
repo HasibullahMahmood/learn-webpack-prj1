@@ -1,11 +1,14 @@
+$background-color: green;
+$font-color: red;
+
 .custom-button {
 	border: none;
 	padding: 12px 16px;
 	color: white;
-	background-color: green;
+	background-color: $background-color;
 }
 
 .custom-p {
 	font-weight: bold;
-	color: green;
+	color: $font-color;
 }
