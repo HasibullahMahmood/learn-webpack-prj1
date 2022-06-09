@@ -1,10 +1,11 @@
 import './button.scss';
 
 class Button {
+	buttonClassName = 'custom-button';
 	render(title) {
 		const button = document.createElement('button');
 		button.innerHTML = title;
-		button.classList.add('custom-button');
+		button.classList.add(this.buttonClassName);
 		document.body.appendChild(button);
 		button.onclick = () => {
 			const p = document.createElement('p');
