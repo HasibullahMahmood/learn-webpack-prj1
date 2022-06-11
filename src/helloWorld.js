@@ -1,5 +1,5 @@
-const helloWorld = () => {
-	console.log('Hello world!');
-};
+import Heading from './components/Heading';
+import _ from 'lodash';
 
-export default helloWorld;
+const heading = new Heading();
+heading.render(_.upperFirst('hello world'));

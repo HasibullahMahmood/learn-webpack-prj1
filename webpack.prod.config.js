@@ -4,13 +4,21 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-	entry: './src/index.js',
+	entry: {
+		helloWorld: './src/helloWorld.js',
+		fruit: './src/fruit.js',
+	},
 	output: {
-		filename: 'bundle.[contenthash].js',
+		filename: '[name].[contenthash].js',
 		path: path.resolve(__dirname, './dist'), // js files
 		publicPath: path.resolve(__dirname, 'dist') + '/', // assets
 	},
 	mode: 'production',
+	optimization: {
+		splitChunks: {
+			chunks: 'all',
+		},
+	},
 	module: {
 		rules: [
 			{
@@ -63,11 +71,19 @@ module.exports = {
 		],
 	},
 	plugins: [
-		new MiniCssExtractPlugin({ filename: 'styles.[contenthash].css' }),
+		new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
 		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
-			template: 'src/index.hbs',
-			description: 'hey this is description',
+			filename: 'hello-world.html',
+			template: 'src/template.hbs',
+			description: 'hey this is description for hello world',
+			chunks: ['helloWorld'],
+		}),
+		new HtmlWebpackPlugin({
+			filename: 'fruits.html',
+			template: 'src/template.hbs',
+			description: 'hey this is description for fruits',
+			chunks: ['fruit'],
 		}),
 	],
 };
